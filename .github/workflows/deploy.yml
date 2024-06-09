@@ -7,10 +7,10 @@ on:
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: ptrepo
-  ECS_SERVICE: PTService
-  ECS_CLUSTER: ProjectCluster
+  ECS_SERVICE: nodepp
+  ECS_CLUSTER: nodepp
   ECS_TASK_DEFINITION: .github/workflows/PTTask.json
-  CONTAINER_NAME: nodeApp
+  CONTAINER_NAME: nodepp
 permissions:
   id-token: write
   contents: read
