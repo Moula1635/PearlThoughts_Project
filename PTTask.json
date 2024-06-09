@@ -1,13 +1,13 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:851725222812:task-definition/PTTask:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:851725222812:task-definition/nodepp:1",
     "containerDefinitions": [
         {
-            "name": "nodeApp",
-            "image": "nodeApp:latest",
+            "name": "nodepp",
+            "image": "public.ecr.aws/b2t3f0b4/ptrepo",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "nodeapp-80-tcp",
+                    "name": "nodepp-80-tcp",
                     "containerPort": 80,
                     "hostPort": 80,
                     "protocol": "tcp",
@@ -23,7 +23,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/PTTask",
+                    "awslogs-group": "/ecs/nodepp",
                     "awslogs-create-group": "true",
                     "awslogs-region": "ap-south-1",
                     "awslogs-stream-prefix": "ecs"
@@ -33,7 +33,8 @@
             "systemControls": []
         }
     ],
-    "family": "PTTask",
+    "family": "nodepp",
+    "taskRoleArn": "arn:aws:iam::851725222812:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::851725222812:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
@@ -48,6 +49,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
@@ -68,12 +72,12 @@
         "FARGATE"
     ],
     "cpu": "1024",
-    "memory": "3072",
+    "memory": "2048",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-06-09T14:04:31.140Z",
+    "registeredAt": "2024-06-09T17:57:31.647Z",
     "registeredBy": "arn:aws:iam::851725222812:user/Levi",
     "tags": []
 }
