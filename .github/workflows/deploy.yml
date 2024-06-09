@@ -6,7 +6,7 @@ on:
       - main
 env:
   AWS_REGION: ap-south-1
-  ECR_REPOSITORY: public.ecr.aws/b2t3f0b4/ptrepo
+  ECR_REPOSITORY: ptrepo
   ECS_SERVICE: PTService
   ECS_CLUSTER: ProjectCluster
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json
@@ -33,9 +33,9 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REGISTRY: public.ecr.aws/b2t3f0b4
           IMAGE_TAG: latest
-          REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          REPOSITORY: ptrepo
         run: |
           docker build -t $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG 
