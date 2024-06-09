@@ -9,7 +9,7 @@ env:
   ECR_REPOSITORY: ptrepo
   ECS_SERVICE: PTService
   ECS_CLUSTER: ProjectCluster
-  ECS_TASK_DEFINITION: .github/workflows/task-definition.json
+  ECS_TASK_DEFINITION: .github/workflows/PTTask.json
   CONTAINER_NAME: nodeApp
 permissions:
   id-token: write
@@ -33,7 +33,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
-          ECR_REGISTRY: public.ecr.aws/b2t3f0b4
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: latest
           REPOSITORY: ptrepo
         run: |
